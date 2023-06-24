@@ -7,8 +7,22 @@ from rest_framework.response import Response
 def main(request: Request) -> Response:
     params = request.query_params
 
-    print(params['name'])
+    name = params['name']
 
     return Response({
-        "name": params['name']
+        "name": name
     })
+
+
+@api_view(['GET'])
+def sum(request: Request) -> Response:
+    params = request.query_params
+
+    a = params['a']
+    b = params['b']
+
+    data = {
+        "sum": int(a) + int(b)
+    }
+    return Response(data=data)
+
