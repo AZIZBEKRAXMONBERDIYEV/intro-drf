@@ -14,15 +14,23 @@ def main(request: Request) -> Response:
     })
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def sum(request: Request) -> Response:
-    params = request.query_params
+    if request.method == 'GET':
+        params = request.query_params
 
-    a = params['a']
-    b = params['b']
+        a = params['a']
+        b = params['b']
 
-    data = {
+    elif request.method == 'POST':
+        data = request.data
+        
+        a = data['a']
+        b = data['b']
+
+    
+    result = {
         "sum": int(a) + int(b)
     }
-    return Response(data=data)
+    return Response(data=result)
 
