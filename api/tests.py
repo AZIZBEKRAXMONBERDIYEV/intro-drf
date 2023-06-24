@@ -21,3 +21,16 @@ class SumViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {'sum': 6})
+
+    def test_post(self):
+        data = {
+            "a": 1,
+            "b": 3
+        }
+
+        url = f'/api/sum/'
+
+        response = self.client.post(url, data, 'application/json')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {'sum': 4})

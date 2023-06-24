@@ -19,8 +19,8 @@ def sum(request: Request) -> Response:
     if request.method == 'GET':
         params = request.query_params
 
-        a = params['a']
-        b = params['b']
+        a = int(params['a'])
+        b = int(params['b'])
 
     elif request.method == 'POST':
         data = request.data
@@ -28,9 +28,9 @@ def sum(request: Request) -> Response:
         a = data['a']
         b = data['b']
 
-    
+
     result = {
-        "sum": int(a) + int(b)
+        "sum": a + b
     }
     return Response(data=result)
 
