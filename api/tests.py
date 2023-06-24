@@ -11,7 +11,7 @@ class MainViewTestCase(TestCase):
 
 
 class SumViewTestCase(TestCase):
-    def test_sum(self):
+    def test_get(self):
         a = 2
         b = 4
 
