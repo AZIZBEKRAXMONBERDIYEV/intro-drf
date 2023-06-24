@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.request import Request
 from rest_framework.response import Response
+from rest_framework import status
 
 
 @api_view(['GET'])
@@ -28,9 +29,12 @@ def sum(request: Request) -> Response:
         a = data['a']
         b = data['b']
 
+    else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
 
     result = {
         "sum": a + b
     }
-    return Response(data=result)
+    return Response(data=result, status=status.HTTP_200_OK)
 
